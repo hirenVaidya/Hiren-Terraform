@@ -23,6 +23,10 @@
 /TF-Backend/terraform.tfstate
 /TF-Backend/terraform.tfstate.backup
 
+/TF-data-source/.terraform
+/TF-data-source/terraform.tfstate.backup
+/TF-data-source/terraform.tfstate
+/TF-data-source/.terraform.lock.hcl
+
 /terraform.tfstate
 /.env
-
