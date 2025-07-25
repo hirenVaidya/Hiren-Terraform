@@ -35,6 +35,16 @@ data "aws_vpc" "name"{
   }
 }   
 
+data "aws_subnet" "name" {
+    filter {
+      name = "vpc-id"
+      values =  [data.aws_vpc.name.id]
+    }
+    tags = {
+      Name = "private-subnet"
+    }
+}
+
 output "vpc_id" {
     value = data.aws_vpc.name.id
 }
@@ -59,7 +69,8 @@ output "aws_ami" {
 resource "aws_instance" "name" {
     ami = "ami-0f918f7e67a3323f0"
     instance_type = "t2.micro"
-
+    subnet_id = data.aws_subnet.name.id
+    security_groups = [data.aws_security_group.name]
     tags = {
     Name = "sampleserver"
     }
